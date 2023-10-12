@@ -6,25 +6,74 @@
 Что я делал:
 
 1. Устанавливаю себе jenkins по инструкции из лекции.
+
 ![Кадр из презентации](https://github.com/Lexacbr/gitlab/blob/main/screenshots/jenkins.png)
-2. `Заполните здесь этапы выполнения, если требуется ....`
-3. `Заполните здесь этапы выполнения, если требуется ....`
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
 
+2. Устанавливаю Go_lang по инструкции из Интернета
+```bash
+sudo snap install go --classic
 ```
-Поле для вставки кода..
-....
-....
-....
-....
+![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/install_go.png)
+
+3. Добавляю в конец файла `/.profile` вот такую строку:
+```bash
+export PATH=$PATH:/usr/local/go/bin
 ```
+4. После этого проверяю, могу ли вы выполнять go_команды, запустив go version:
+```bash
+go version
+```
+![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/go_version.png)
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 1](ссылка на скриншот 1)`
+5. Теперь, когда Go установлен и пути для сервера заданы, надо попробовать создать `Hello, World!` приложение, чтобы убедиться, что Go работает. Сначала создаю новый каталог для рабочего пространства Go, в котором Go будет собирать свои файлы:
+```bash
+mkdir hello
+```
+6. Перехожу в папку: 
+```bash
+cd hello
+```
+![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/mkdir.png)
+
+7. При импорте пакетов придется управлять зависимостями через собственный модуль кода. Делаю это, создав `go.mod` файл с помощью `go mod init` команды:
+```bash
+go mod init example/hello
+```
+8. Затем создайте `Hello, World!` файл Go. Я делал это в `nano` текстовом редакторе:
+```bash
+nano hello.go
+```
+9. Добавьте в файл следующий текст `hello.go`:
+```golang
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+```
+Затем сохранил и закрыл файл, нажав CTRL+X, затем Y, а затем ENTER.
+
+10. Проверяю свой код, чтобы убедиться, что он печатает `Hello, World!` приветствие:
+```bash
+go run .
+```
+Должно быть что-то вроде этого:
+```bash
+Output
+Hello, World!
+```
+![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/go_run.png)
+
+11. Пробую запустить `go build .` Запускать нужно из того же каталога, где хранится `hello.go` файл:
+```bash
+go build .
+```
+![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/go_build.png)
 
 
+[Ссылка на коммит]()
 ---
 
 ### Задание 2

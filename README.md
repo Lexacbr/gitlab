@@ -73,7 +73,7 @@ go build .
 ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/go_build.png)
 
 
-[Ссылка на коммит]()
+[Ссылка на коммит](https://github.com/Lexacbr/gitlab/commit/5beacc0af6fbbefdb6fd99eaaf14354382c5f43f)
 ---
 
 ### Задание 2

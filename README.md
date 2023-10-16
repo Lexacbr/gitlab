@@ -31,6 +31,7 @@ export PATH=$PATH:/usr/local/go/bin
 go version
 ```
 ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/go_version.png)
+
   Теперь, когда Go установлен и пути для сервера заданы, надо попробовать создать `Hello, World!` приложение, чтобы убедиться, что Go работает. Сначала создаю новый каталог для рабочего пространства Go, в котором Go будет собирать свои файлы:
 ```bash
 mkdir hello

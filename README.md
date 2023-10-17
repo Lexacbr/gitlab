@@ -81,7 +81,47 @@ go build .
 
 3. Сделал `fork`скачал домашнее задание с ссылкой к себе в репозиторий.
 
-4. 
+4. Всё делал по лекци, но проблемы всё же были:
+   Начал с того, что настроил в Jenkins, как будет собираться мой проект. По-скольку Дженкинс был на ВМ через ВиртуалБокс я его настраивал вручную, а не через  Вагрант-файл, и Гоулэнг установался через `snap`. Из-за этого команды в Дженкинс немного изменились, а именно запуск бинарного файла "Гоу" был таким:
+ ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/snap.png) 
+  
+  Потом установил Нексус в докер-контенере,с пробросом 2-ух портов (8081 и 8082), который я запустил на хостовой машине, и настроил резолв для соединения с Нексусом.
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/nex_inst.png)
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/etc_hosts.png)
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/ps_a.png)
+  
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/ping.png)
+
+  После того как я убедился, что всё работает, я переключился на создание самого проекта в Дженкинс. Сразу скажу, что сборок было 13 и не сразу настроил всё как надо. Сначала я установил неправильную команду на тест
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/err_go.png)
+
+  Исправил путь до бинарного файла в проекте. Потом была проблемма с Докером
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/err_dock.png)
+
+  Тут я запутался в машинах, что на какой установленно, и понял потом, что на ВМ вообще не установлен Докер. Установил. Но проблемма не исчезла , т.к. устанавливал "руками" и не обратил внимание на Вагрант-файл, где были нужно произвести некоторые, важные настройки, а именно: нужно было создать на машине с Дженкинсом json файл с настройкой "insecure". Потом нужно рестортовать докер сервис
+  ```bash
+  sudo systemctl restatr docker 
+  ```
+  Потом я добавил Дженкинс в группу пользователей с Докером 
+  ```bash
+  sudo usermod -aG docker jenkins
+  ```
+  Потом поменял права на папку `/var/run/docker.sock`
+  ```bash
+  sudo chmod 666 /var/run/docker.sock
+  ```
+  После этого задача выполнилась без каких-либо проблем.
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/jenk_b_ok.png)
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/jenk_ok.png)
+
+  ![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/nex_ok.png)
 
 
 [Ссылка на коммит](https://github.com/Lexacbr/gitlab/commit/5beacc0af6fbbefdb6fd99eaaf14354382c5f43f)

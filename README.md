@@ -139,7 +139,7 @@ go build .
 
 1. Открыл в Дженкинс новый проект `Pipeline`
 
-![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/pipeline.png)
+![Скриншот](https://github.com/Lexacbr/gitlab/blob/main/screenshots/pipline.png)
 
 2. Вставил скрипт в диалоговое окно 
 
